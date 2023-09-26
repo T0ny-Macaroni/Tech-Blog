@@ -1,26 +1,33 @@
-const seedCategories = require('./category-seeds');
-const seedProducts = require('./product-seeds');
-const seedTags = require('./tag-seeds');
-const seedProductTags = require('./product-tag-seeds');
-
 const sequelize = require('../config/connection');
+const { User, Blog, Comment } = require('../models');
 
-const seedAll = async () => {
+const userData = require('./userData.json');
+const blogData = require('./blogData.json');
+const commentsData = require('./commentsData.json');
+
+const seedDatabase = async () => {
   await sequelize.sync({ force: true });
-  console.log('\n----- DATABASE SYNCED -----\n');
-  await seedCategories();
-  console.log('\n----- CATEGORIES SEEDED -----\n');
 
-  await seedProducts();
-  console.log('\n----- PRODUCTS SEEDED -----\n');
+  const users = await User.bulkCreate(userData, {
+    individualHooks: true,
+    returning: true,
+  });
 
-  await seedTags();
-  console.log('\n----- TAGS SEEDED -----\n');
+  for (const blog of blogData) {
+    await Blog.create({
+      ...blog,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
+    });
+  }
 
-  await seedProductTags();
-  console.log('\n----- PRODUCT TAGS SEEDED -----\n');
+
+  const comments = await Comment.bulkCreate(commentsData, {
+    returning: true,
+  });
+
+
 
   process.exit(0);
 };
 
-seedAll();
+seedDatabase();
