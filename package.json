@@ -1,24 +1,26 @@
 {
-    "name": "crowd-funding",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node server.js",
-      "seed": "node seeds/seed.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "bcrypt": "^5.0.0",
-      "connect-session-sequelize": "^7.0.4",
-      "dotenv": "^8.2.0",
-      "express": "^4.17.1",
-      "express-handlebars": "^5.2.0",
-      "express-session": "^1.17.1",
-      "mysql2": "^2.2.5",
-      "sequelize": "^6.3.5"
-    }
-  }
+  "name": "museum-paintings",
+  "version": "1.0.0",
+  "description": "This is the homework creating a tech blogger website that allows you to log in, create a post, update / delete your posts, and comment on others posts.   ## TABLE OF CONTENTS   -- [Installation](#installation)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "handlebars": "^4.7.6",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {},
+  "keywords": []
+}
